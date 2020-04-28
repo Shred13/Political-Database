@@ -1,38 +1,12 @@
 $(document).ready(function(){
     $('input.fname').autocomplete({
-        data: {
-
-            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "CSS": null,
-            "HTML": null,
-            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "Java": null,
-            "Fish": null,
-            "Python": null
-        },
+        limit: 5
     });
     $('input.lname').autocomplete({
-        data: {
-            // "jQuery": null,
-            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "CSS": null,
-            "HTML": null,
-            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "Java": null,
-            "Python": null
-        },
+        limit: 5
     });
     $('input.address').autocomplete({
-        data: {
-            // "jQuery": null,
-            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "CSS": null,
-            "HTML": null,
-            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
-            "Java": null,
-            "Shrey": null,
-            "Python": null
-        },
+        limit: 5
     });
 });
 
@@ -101,13 +75,45 @@ function downloadObjectAsJson(exportObj, exportName){
 
 function reqListener() {
     let json_to_fill = make_json(this.responseText);
-    downloadObjectAsJson(json_to_fill, "Political_Json")
-
+    downloadObjectAsJson(json_to_fill, "Political_Json");
 }
 
-function update_database() {
+function download_json() {
     let oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
     oReq.open("GET", "data.csv");
     oReq.send();
 }
+
+function toJSON() {
+    let json_to_fill = make_json(this.responseText);
+    let final_fnameJSON = {};
+    let final_lnameJSON = {};
+    let final_addJSON = {};
+    for(let i = 0; i<json_to_fill.length; i++){
+        final_fnameJSON[json_to_fill[i]["FirstName"]] = null;
+        final_lnameJSON[json_to_fill[i]["LastName"]] = null;
+        final_addJSON[json_to_fill[i]["ResAddressLine2"]] = null;
+    }
+    const fname_input = document.querySelector('input.fname');
+    let instance = M.Autocomplete.getInstance(fname_input);
+    instance.updateData(final_fnameJSON);
+
+    const lname_input = document.querySelector('input.lname');
+    let lname_instance = M.Autocomplete.getInstance(lname_input);
+    lname_instance.updateData(final_lnameJSON);
+
+    const add_input = document.querySelector('input.address');
+    let add_instance = M.Autocomplete.getInstance(add_input);
+    add_instance.updateData(final_addJSON);
+}
+//todo combine first name and last name to make it better and more accurate.
+//todo also make a json with firstname and json based on address, not numbers.
+function read_csv() {
+    let oReq = new XMLHttpRequest();
+    oReq.addEventListener("load", toJSON);
+    oReq.open("GET", "data.csv");
+    oReq.send();
+}
+
+read_csv();

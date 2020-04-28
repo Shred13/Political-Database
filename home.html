@@ -31,8 +31,11 @@
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" class="address autocomplete"><br><br>
     </div>
-    <button type="submit" class="waves-effect waves-light btn" value="Submit">Submit</button>
+    <button type="submit" class="waves-effect waves-light btn" value="Submit" onclick="read_csv()">Submit</button>
 </fieldset>
+<br>
+<br>
+<button class="waves-effect waves-dark btn" onclick="download_json()">Convert CSV to JSON</button>
 <script src="functions.js"></script>
 </body>
 </html>
