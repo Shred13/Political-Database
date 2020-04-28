@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
-    <script src="firebase_info.js"></script>
-    <script src="functions.js"></script>
-
-    <button onclick="update_database()">Update the Data</button>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+<script src="firebase_info.js"></script>
+<fieldset>
+    <legend>Search</legend>
+    <div class="input-field" id="fname_in">
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" class="fname autocomplete"><br><br>
+    </div>
+    <div class="input-field" id="lname_in">
+        <input type="text" id="lname" name="lname" class="lname autocomplete"><br><br>
+        <label for="lname">Last name:</label>
+    </div>
+    <div class="input-field">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" class="address autocomplete"><br><br>
+    </div>
+    <button type="submit" class="waves-effect waves-light btn" value="Submit">Submit</button>
+</fieldset>
+<script src="functions.js"></script>
 </body>
 </html>

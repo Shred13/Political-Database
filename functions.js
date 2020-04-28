@@ -1,5 +1,40 @@
-// Your web app's Firebase configuration
+$(document).ready(function(){
+    $('input.fname').autocomplete({
+        data: {
 
+            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "CSS": null,
+            "HTML": null,
+            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "Java": null,
+            "Fish": null,
+            "Python": null
+        },
+    });
+    $('input.lname').autocomplete({
+        data: {
+            // "jQuery": null,
+            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "CSS": null,
+            "HTML": null,
+            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "Java": null,
+            "Python": null
+        },
+    });
+    $('input.address').autocomplete({
+        data: {
+            // "jQuery": null,
+            "JavaScript": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "CSS": null,
+            "HTML": null,
+            "Bootstrap": 'https://www.jquery-az.com/wp-content/uploads/2017/12/favicon-32x32.png',
+            "Java": null,
+            "Shrey": null,
+            "Python": null
+        },
+    });
+});
 
 function make_json(csv) {
     let lines = csv.split("\n");
